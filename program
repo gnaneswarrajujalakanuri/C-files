@@ -1,0 +1,101 @@
+#include <stdio.h>
+int main() {
+    int size;
+    printf("Enter the number of rows: ");
+    scanf("%d", &size);
+    for (int i = 1; i <= size; i++) {
+        int value = i % 2 ;
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", value);
+            value = 1- value;
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+//Finding the missing number from the series
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int n;
+    printf("Enter the size of the array: ");
+    scanf("%d",&n);
+    int *arr = malloc(sizeof(int)*n);
+    for(int i = 0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    int largest = arr[0];
+    for(int i = 1;i<n;i++){
+        if(largest < arr[i])
+        largest = arr[i];
+    }
+    // printf("\nThe largest is %d",largest);
+    int total = (largest * (largest+1))/2;
+    int sum = 0;
+    for(int i = 0;i<n;i++){
+        sum += arr[i];
+    }
+    printf("The missing number is %d",(total - sum));
+
+}
+
+//Wavearray
+#include<stdio.h>
+#include<stdlib.h>
+void swap(int *a,int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void wavearray(int a[],int l){
+    for(int i = 0;i<l;i += 2){
+        swap(&a[i],&a[i+1]);
+    }
+}
+int main(){
+    int n;
+    printf("Enter the size of the array: ");
+    scanf("%d",&n);
+    int *arr = malloc(sizeof(int)*n);
+    for(int i = 0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    wavearray(arr,n);
+    for(int i = 0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+}
+
+//Movezeros to the right
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d",&size);
+    int *arr = malloc(sizeof(int)*size);
+    for(int i = 0;i<size;i++){
+        scanf("%d",&arr[i]);
+    }
+    printf("The array you entered is: ");
+    for(int i = 0;i<size;i++){
+        printf("%d ",arr[i]);
+    }
+    int count = 0;
+    for(int i = 0;i<size;i++){
+        if(arr[i] == 0){
+            count++;
+        }
+    }
+    printf("\nThe array after arranging the zeros is: ");
+    for(int i = 0;i<size;i++){
+        if(arr[i] != 0)
+        printf("%d ",arr[i]);
+    }
+    for(int i = 0;i<count;i++){
+        printf("%d ",0);
+    }
+}
